@@ -9,25 +9,27 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e3a8a 100%);
             background-image: url('images/background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-blend-mode: overlay;
         }
         .form-input {
-            @apply w-full px-4 py-3 border rounded-lg transition-colors bg-black bg-opacity-60 border-purple-400 text-white placeholder-purple-200 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 backdrop-blur-sm;
+            @apply w-full px-4 py-3 border rounded-lg transition-all duration-300 bg-white bg-opacity-10 border-pink-400 text-white placeholder-pink-200 focus:ring-4 focus:ring-pink-300 focus:border-pink-300 backdrop-blur-md shadow-lg;
         }
         .btn {
-            @apply w-full px-6 py-3 rounded-lg text-white font-semibold transition-transform transform hover:scale-105;
+            @apply w-full px-6 py-3 rounded-lg text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg;
         }
         .btn-primary {
-            @apply bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 shadow-lg shadow-cyan-500/25;
+            @apply bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 hover:from-pink-400 hover:via-purple-400 hover:to-indigo-500 shadow-xl shadow-pink-500/30 hover:shadow-pink-400/40;
         }
         .donation-amount-btn {
-            @apply w-full py-3 px-2 border rounded-lg text-center font-semibold cursor-pointer transition-colors bg-black bg-opacity-50 text-cyan-200 border-cyan-400 hover:bg-cyan-500 hover:text-black backdrop-blur-sm;
+            @apply w-full py-3 px-2 border rounded-lg text-center font-semibold cursor-pointer transition-all duration-300 bg-white bg-opacity-10 text-pink-200 border-pink-400 hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500 hover:text-white backdrop-blur-md shadow-lg;
         }
         .donation-amount-btn.selected {
-            @apply bg-gradient-to-r from-cyan-400 to-purple-500 text-black border-cyan-300 shadow-lg shadow-cyan-400/50;
+            @apply bg-gradient-to-r from-pink-400 to-purple-500 text-white border-pink-300 shadow-xl shadow-pink-400/50;
         }
         .card-input-wrapper {
             position: relative;
@@ -40,7 +42,7 @@
             transform: translateY(-50%);
             width: 24px;
             height: 24px;
-            color: #a78bfa; /* purple-400 */
+            color: #f472b6; /* pink-400 */
             pointer-events: none;
         }
     </style>
@@ -48,25 +50,25 @@
 <body class="flex items-center justify-center min-h-screen p-4">
 
     <!-- Main container for all views --><div class="w-full max-w-4xl mx-auto relative">
-        <!-- Admin Link --><a href="#" id="admin-link" class="absolute top-4 right-4 text-sm text-cyan-300 hover:text-cyan-100 hover:underline z-10">Admin</a>
+        <!-- Admin Link --><a href="#" id="admin-link" class="absolute top-4 right-4 text-sm text-pink-300 hover:text-pink-100 hover:underline z-10">Admin</a>
 
-        <!-- Donation Form View --><div id="donation-form-container" class="w-full max-w-lg mx-auto bg-black bg-opacity-70 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 backdrop-blur-sm border border-cyan-400/30">
+        <!-- Donation Form View --><div id="donation-form-container" class="w-full max-w-lg mx-auto bg-white bg-opacity-10 rounded-2xl shadow-2xl overflow-hidden transition-all duration-500 backdrop-blur-md border border-pink-400/50">
             
             <div class="p-8">
                 <div class="text-center mb-6">
-                    <h1 class="text-3xl font-bold text-cyan-100">Support Children in Gaza</h1>
-                    <p class="text-purple-200 mt-2">Your kindness can bring hope and relief to those in need.</p>
+                    <h1 class="text-3xl font-bold text-white">Support Children in Gaza</h1>
+                    <p class="text-pink-200 mt-2">Your kindness can bring hope and relief to those in need.</p>
                 </div>
 
-                <!-- Impact Paragraph --><div class="mb-6 bg-black bg-opacity-50 p-4 rounded-lg border border-purple-400/50 backdrop-blur-sm">
-                    <p class="text-cyan-100 text-sm leading-relaxed">
-                        The ongoing situation in Gaza has deeply affected countless children, leaving many in urgent need of basic necessities. Your generous donation will go directly towards providing essential food to combat malnutrition, warm clothing to protect against harsh conditions, and crucial medical services for those injured or ill. Every contribution, no matter the size, helps to offer a glimmer of hope and vital support to these vulnerable children, ensuring they have a chance at a healthier and safer future. Together, we can make a profound difference in their lives.
+                <!-- Impact Paragraph --><div class="mb-6 bg-white bg-opacity-10 p-4 rounded-lg border border-pink-400/50 backdrop-blur-md shadow-lg">
+                    <p class="text-white text-sm leading-relaxed">
+                        Children in Gaza urgently need food, medical care, and shelter. Your donation provides essential aid to vulnerable families, offering hope and vital support during this critical time.
                     </p>
                 </div>
 
                 <form id="donation-form" onsubmit="handleDonation(event)">
                     <!-- Donation Amount Section --><div class="mb-6">
-                        <h2 class="text-lg font-semibold text-cyan-200 mb-3">Choose Donation Amount</h2>
+                        <h2 class="text-lg font-semibold text-white mb-3">Choose Donation Amount</h2>
                         <div class="grid grid-cols-3 md:grid-cols-5 gap-3">
                             <button type="button" class="donation-amount-btn" data-amount="1">$1</button>
                             <button type="button" class="donation-amount-btn" data-amount="25">$25</button>
@@ -75,13 +77,13 @@
                             <button type="button" class="donation-amount-btn" data-amount="250">$250</button>
                         </div>
                         <div class="mt-4 relative">
-                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-purple-300 text-lg">$</span>
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-pink-300 text-lg">$</span>
                             <input type="number" id="custom-amount" class="form-input pl-8" placeholder="Or enter a custom amount">
                         </div>
                     </div>
 
                     <!-- Donor Details Section --><div class="mb-6">
-                        <h2 class="text-lg font-semibold text-cyan-200 mb-3">Your Details</h2>
+                        <h2 class="text-lg font-semibold text-white mb-3">Your Details</h2>
                         <div class="space-y-4">
                             <input type="text" id="donor-name" class="form-input" placeholder="Full Name" required>
                             <input type="email" id="donor-email" class="form-input" placeholder="Email Address" required>
@@ -89,7 +91,7 @@
                     </div>
 
                     <!-- Payment Information Section --><div>
-                        <h2 class="text-lg font-semibold text-cyan-200 mb-3">Payment Information</h2>
+                        <h2 class="text-lg font-semibold text-white mb-3">Payment Information</h2>
                         <div class="space-y-4">
                             <div class="card-input-wrapper">
                                 <input type="text" id="card-number" class="form-input" placeholder="Card Number" required pattern="\d{4} \d{4} \d{4} \d{4}" title="Enter a 16-digit card number format.">
@@ -402,6 +404,11 @@
 </body>
 </html>
 `
+
+
+
+`
+
 
 
 
